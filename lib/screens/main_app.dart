@@ -43,6 +43,9 @@ class _MainAppState extends State<MainApp> {
                 color: Colors.blueGrey,
               ),
             ),
+            ElevatedButton(onPressed: () {
+              Navigator.pop(context);
+            }, child: Text('Logout')),
           ],
         ),
       ),
