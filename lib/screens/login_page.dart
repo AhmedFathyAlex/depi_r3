@@ -1,4 +1,5 @@
 import 'package:depi_flutter/screens/main_app.dart';
+import 'package:depi_flutter/screens/signup.dart';
 import 'package:depi_flutter/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 
@@ -30,7 +31,16 @@ class LoginPage extends StatelessWidget {
             ),
             SizedBox(height: 10),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+              Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return Signup();
+                    },
+                  ),
+                );
+              },
               child: Text(
                 'First time ? Sign up',
                 style: TextStyle(decoration: TextDecoration.underline),
@@ -48,7 +58,7 @@ class LoginPage extends StatelessWidget {
         passwordController.text.length >= 8) {
       emailController.clear();
       passwordController.clear();
-      Navigator.push(
+      Navigator.pushReplacement(
         context,
         MaterialPageRoute(
           builder: (context) {

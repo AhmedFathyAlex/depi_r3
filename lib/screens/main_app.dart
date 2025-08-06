@@ -1,3 +1,4 @@
+import 'package:depi_flutter/screens/login_page.dart';
 import 'package:flutter/material.dart';
 
 class MainApp extends StatefulWidget {
@@ -13,18 +14,13 @@ class _MainAppState extends State<MainApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('My App'),
-        leading: Icon(Icons.arrow_back_ios),
-        actions: [
-          Icon(Icons.settings),
-          SizedBox(width: 10),
-          Icon(Icons.home),
-          SizedBox(width: 10),
-          Icon(Icons.arrow_forward_ios),
-          SizedBox(width: 10),
-        ],
-      ),
+      appBar: AppBar(title: Text('My App'),actions:[
+        IconButton(onPressed: (){
+          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context){
+            return LoginPage();
+          }));
+        }, icon: Icon(Icons.logout))
+      ]),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -43,9 +39,6 @@ class _MainAppState extends State<MainApp> {
                 color: Colors.blueGrey,
               ),
             ),
-            ElevatedButton(onPressed: () {
-              Navigator.pop(context);
-            }, child: Text('Logout')),
           ],
         ),
       ),
