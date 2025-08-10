@@ -9,47 +9,93 @@ class MainApp extends StatefulWidget {
 }
 
 class _MainAppState extends State<MainApp> {
-  int counter = 1;
+  List names = [
+    'Ahmed',
+    'aly',
+    'salah',
+    'mona',
+    'Ahmed',
+    'aly',
+    'salah',
+    'mona',
+    'Ahmed',
+    'aly',
+    'salah',
+    'mona',
+    'Ahmed',
+    'aly',
+    'salah',
+    'mona',
+    'test',
+    'test 2 ',
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('My App'),actions:[
-        IconButton(onPressed: (){
-          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context){
-            return LoginPage();
-          }));
-        }, icon: Icon(Icons.logout))
-      ]),
+      appBar: AppBar(
+        title: Text('My App'),
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return LoginPage();
+                  },
+                ),
+              );
+            },
+            icon: Icon(Icons.logout),
+          ),
+        ],
+      ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            CircleAvatar(
-              radius: 50,
-              backgroundImage: AssetImage('assets/a.jpg'),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                SizedBox(width: 25),
+                Expanded(
+                  child: TextField(
+                    decoration: InputDecoration(
+                      hintText: 'Search Here',
+                      prefixIcon: Icon(Icons.search),
+                      border: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.grey.shade400),
+                      ),
+                    ),
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.all(20),
+                  width: 50,
+                  height: 50,
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.grey.shade400),
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  child: Icon(Icons.sort),
+                ),
+              ],
             ),
-            Divider(),
-            Text('The current counter'),
-            Text(
-              counter.toString(),
-              style: TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.w700,
-                color: Colors.blueGrey,
+            Container(
+              margin: EdgeInsets.all(20),
+              padding: EdgeInsets.all(20),
+              width: 300,
+              height: 50,
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.grey.shade400),
+                borderRadius: BorderRadius.circular(15),
+              ),
+              child: TextField(
+                decoration: InputDecoration(border: InputBorder.none),
               ),
             ),
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            counter++;
-          });
-
-          print(counter);
-        },
       ),
     );
   }
