@@ -1,4 +1,6 @@
+import 'package:depi_flutter/helpers/routes.dart';
 import 'package:depi_flutter/screens/main_app.dart';
+import 'package:depi_flutter/screens/profile.dart';
 import 'package:depi_flutter/screens/signup.dart';
 import 'package:depi_flutter/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +8,7 @@ import 'package:flutter/material.dart';
 class LoginPage extends StatelessWidget {
   LoginPage({super.key});
   final TextEditingController emailController = TextEditingController();
+  final TextEditingController nameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -19,6 +22,7 @@ class LoginPage extends StatelessWidget {
               'https://cdn-icons-png.flaticon.com/512/14018/14018816.png',
               width: 200,
             ),
+            CustomTextField(label: 'user name', controller: nameController),
             CustomTextField(label: 'Email', controller: emailController),
             CustomTextField(
               label: 'Password',
@@ -32,14 +36,7 @@ class LoginPage extends StatelessWidget {
             SizedBox(height: 10),
             TextButton(
               onPressed: () {
-              Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return Signup();
-                    },
-                  ),
-                );
+                Navigator.pushReplacementNamed(context, Routes.signup);
               },
               child: Text(
                 'First time ? Sign up',
@@ -53,27 +50,12 @@ class LoginPage extends StatelessWidget {
   }
 
   _login(BuildContext context) {
-    if (emailController.text.contains('@') &&
-        emailController.text.contains('.') &&
-        passwordController.text.length >= 8) {
-      emailController.clear();
-      passwordController.clear();
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) {
-            return MainApp();
-          },
-        ),
-      );
-    } else {
-      if (!(emailController.text.contains('@') &&
-          emailController.text.contains('.'))) {
-        print('Enter valid email');
-      }
-      if (passwordController.text.length < 8) {
-        print('Weak password');
-      }
-    }
+    var name = nameController.text;
+    var email = emailController.text;
+    Navigator.pushReplacementNamed(
+      context,
+      Routes.profile,
+      arguments: {'name': name, 'email': email},
+    );
   }
 }

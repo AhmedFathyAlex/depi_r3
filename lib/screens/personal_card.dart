@@ -1,3 +1,4 @@
+import 'package:depi_flutter/helpers/routes.dart';
 import 'package:flutter/material.dart';
 
 class PersonalCard extends StatelessWidget {
@@ -6,7 +7,21 @@ class PersonalCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(title: Text('My Personal ID')),
+      drawer: Drawer(
+        child: Column(
+          children: [
+            TextButton(
+              onPressed: () {
+                Navigator.pushNamed(context, Routes.login);
+              },
+              child: Text('login'),
+            ),
+            DrawerButton(color: Colors.red),
+            DrawerButton(color: Colors.red),
+          ],
+        ),
+      ),
+      appBar: AppBar(title: Text('My Personal ID')),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(24.0),
@@ -30,15 +45,10 @@ class PersonalCard extends StatelessWidget {
                         maxLines: 4,
                         overflow: TextOverflow.ellipsis,
                       ),
-                      Row(
-                        children: [
-                          OverflowBar(
-                            children: [
+                      Row(children: [OverflowBar(children: [
                           
                             ],
-                          ),
-                        ],
-                      ),
+                          )]),
                     ],
                   ),
                 ),

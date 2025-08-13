@@ -1,3 +1,4 @@
+import 'package:depi_flutter/helpers/routes.dart';
 import 'package:depi_flutter/screens/login_page.dart';
 import 'package:depi_flutter/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
@@ -150,13 +151,9 @@ class _SignupState extends State<Signup> {
               SizedBox(height: 10),
               TextButton(
                 onPressed: () {
-                  Navigator.pushReplacement(
+                  Navigator.pushReplacementNamed(
                     context,
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return LoginPage();
-                      },
-                    ),
+                    Routes.login
                   );
                 },
                 child: Text(
