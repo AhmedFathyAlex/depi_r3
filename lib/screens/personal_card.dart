@@ -1,9 +1,25 @@
+import 'dart:math';
+
 import 'package:depi_flutter/helpers/routes.dart';
 import 'package:flutter/material.dart';
 
-class PersonalCard extends StatelessWidget {
+class PersonalCard extends StatefulWidget {
   PersonalCard({Key? key}) : super(key: key);
 
+  @override
+  State<PersonalCard> createState() => _PersonalCardState();
+}
+
+class _PersonalCardState extends State<PersonalCard> {
+  bool isLoading = false;
+  late Future myFuture;
+  String resultText = 'None';
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _asuncFunc();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,39 +41,39 @@ class PersonalCard extends StatelessWidget {
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(24.0),
-          child: SizedBox(
-            height: 200,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Expanded(
-                  child: Image.network(
-                    'https://ichef.bbc.co.uk/ace/standard/1600/food/recipes/easy_chocolate_cake_31070_16x9.jpg.webp',
-                  ),
-                  flex: 2,
-                ),
-                Expanded(
-                  child: Column(
+          child:
+          FutureBuilder(future: myFuture, 
+           builder: (context,snapshot){
+              if (snapshot.hasData){
+                return Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text('title'),
-                      Text(
-                        'description description description description description description description description description description description description description description description description description description description description ',
-                        maxLines: 4,
-                        overflow: TextOverflow.ellipsis,
+                      Text(resultText),
+                      ElevatedButton(
+                        onPressed: () {
+                            _asuncFunc();
+                        },
+                        child: Text('Click Me'),
                       ),
-                      Row(children: [OverflowBar(children: [
-                          
-                            ],
-                          )]),
                     ],
-                  ),
-                ),
-              ],
-            ),
-          ),
+                  );
+              }
+              if(snapshot.hasError){
+               return Text('Error');
+              }
+              
+              return   SizedBox(height: 30, child: CircularProgressIndicator());
+              
+           })
         ),
       ),
     );
+  }
+
+  _asuncFunc(){
+      myFuture =  Future.delayed(const Duration(seconds: 2), () {
+        return Random().nextBool() ? 'Success' : throw ('Error');
+      });
   }
 }
 
