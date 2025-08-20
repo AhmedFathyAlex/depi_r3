@@ -1,7 +1,4 @@
 import 'package:depi_flutter/helpers/routes.dart';
-import 'package:depi_flutter/screens/main_app.dart';
-import 'package:depi_flutter/screens/profile.dart';
-import 'package:depi_flutter/screens/signup.dart';
 import 'package:depi_flutter/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 

@@ -1,3 +1,4 @@
+import 'package:depi_flutter/news/ui/screens/news.dart';
 import 'package:depi_flutter/screens/login_page.dart';
 import 'package:depi_flutter/screens/main_app.dart';
 import 'package:depi_flutter/screens/personal_card.dart';
@@ -16,8 +17,10 @@ void main() {
         Routes.mainApp: (context) => MainApp(),
         Routes.card: (context) => PersonalCard(),
         Routes.profile: (context) => Profile(),
+        Routes.news: (context) => News(),
+
       },
-      initialRoute: Routes.card,
+      initialRoute: Routes.news,
       debugShowCheckedModeBanner: false,
     ),
   );
