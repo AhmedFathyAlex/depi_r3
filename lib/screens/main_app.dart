@@ -13,7 +13,7 @@ class MainApp extends StatefulWidget {
 
 class _MainAppState extends State<MainApp> {
   int index = 0;
-  List<Widget> screens = [LoginPage(), Profile(), Signup()];
+  List<Widget> screens = [MyWidget(), Profile(), Signup()];
 
   @override
   Widget build(BuildContext context) {
@@ -38,6 +38,21 @@ class _MainAppState extends State<MainApp> {
           ),
         ],
       ),
+    );
+  }
+}
+
+class MyWidget extends StatelessWidget {
+  const MyWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
+    return  Column(
+      children: [
+        Text('Height : ${size.height}') , 
+        Text('Width : ${size.width}') , 
+      ],
     );
   }
 }

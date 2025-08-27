@@ -13,6 +13,7 @@ dependencies:
   http: ^1.5.0
   shimmer_animation: ^2.2.2
   dio: ^5.9.0
+  provider: ^6.1.5+1
 
 dev_dependencies:
   flutter_test:

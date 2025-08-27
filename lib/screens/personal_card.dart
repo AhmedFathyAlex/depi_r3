@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:depi_flutter/helpers/routes.dart';
 import 'package:flutter/material.dart';
 
@@ -11,15 +9,13 @@ class PersonalCard extends StatefulWidget {
 }
 
 class _PersonalCardState extends State<PersonalCard> {
-  bool isLoading = false;
-  late Future myFuture;
-  String resultText = 'None';
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    _asuncFunc();
-  }
+  PageController _controller = PageController();
+  int _currentPage = 0; // Ephemeral State .
+  List pages = [
+    Center(child: Text('First Page')),
+    Center(child: Text('Second Page')),
+    Center(child: Text('Third Page')),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,39 +37,22 @@ class _PersonalCardState extends State<PersonalCard> {
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(24.0),
-          child:
-          FutureBuilder(future: myFuture, 
-           builder: (context,snapshot){
-              if (snapshot.hasData){
-                return Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(resultText),
-                      ElevatedButton(
-                        onPressed: () {
-                            _asuncFunc();
-                        },
-                        child: Text('Click Me'),
-                      ),
-                    ],
-                  );
-              }
-              if(snapshot.hasError){
-               return Text('Error');
-              }
-              
-              return   SizedBox(height: 30, child: CircularProgressIndicator());
-              
-           })
+          child: PageView.builder(
+            controller: _controller,
+            onPageChanged: (value) {
+              setState(() {
+                _currentPage = value;
+              });
+            },
+            itemBuilder: (context, index) {
+              return pages[index];
+            },
+            
+            itemCount: pages.length,
+          ),
         ),
       ),
     );
-  }
-
-  _asuncFunc(){
-      myFuture =  Future.delayed(const Duration(seconds: 2), () {
-        return Random().nextBool() ? 'Success' : throw ('Error');
-      });
   }
 }
 
