@@ -1,19 +1,22 @@
-import 'package:depi_flutter/cart_provider.dart';
+import 'package:depi_flutter/helpers/bloc_observer.dart';
+import 'package:depi_flutter/news/ui/cubit/news_cubit.dart';
 import 'package:depi_flutter/news/ui/screens/news.dart';
+import 'package:depi_flutter/screens/counter.dart';
 import 'package:depi_flutter/screens/login_page.dart';
 import 'package:depi_flutter/screens/main_app.dart';
-import 'package:depi_flutter/screens/my_catalog.dart';
 import 'package:depi_flutter/screens/personal_card.dart';
 import 'package:depi_flutter/screens/profile.dart';
 import 'package:depi_flutter/screens/signup.dart';
+import 'package:depi_flutter/state_managment/counter_cubit.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'helpers/routes.dart';
 
 void main() {
+   Bloc.observer = MyBlocObserver();
   runApp(
-    ChangeNotifierProvider(
-      create: (context) => CartProvider(),
+    BlocProvider(
+      create: (context) => CounterCubit(),
       child: MaterialApp(
         // named routes
         routes: {
@@ -22,9 +25,9 @@ void main() {
           Routes.mainApp: (context) => MainApp(),
           Routes.card: (context) => PersonalCard(),
           Routes.profile: (context) => Profile(),
-          Routes.news: (context) => News(),
+          Routes.news: (context) => News(), 
         },
-        home: MyCatalog(),
+        home: Counter(),
         debugShowCheckedModeBanner: false,
       ),
     ),

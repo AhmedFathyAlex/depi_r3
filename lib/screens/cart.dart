@@ -1,4 +1,4 @@
-import 'package:depi_flutter/cart_provider.dart';
+import 'package:depi_flutter/state_managment/cart_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
