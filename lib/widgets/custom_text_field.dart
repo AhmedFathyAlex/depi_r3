@@ -8,6 +8,7 @@ class CustomTextField extends StatelessWidget {
     this.isPassword = false,
     this.width,
     this.validatorFunc,
+    this.onClick
   });
 
   final String label;
@@ -15,7 +16,7 @@ class CustomTextField extends StatelessWidget {
   final bool isPassword;
   final double? width;
   final String? Function(String?)? validatorFunc;
-
+  final void Function()? onClick;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -23,6 +24,7 @@ class CustomTextField extends StatelessWidget {
       child: Container(
         width: width,
         child: TextFormField(
+          onTap: onClick,
           validator: validatorFunc,
           obscureText: isPassword,
           controller: controller,

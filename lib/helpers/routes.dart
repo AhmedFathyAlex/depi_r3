@@ -5,4 +5,5 @@ class Routes {
   static String card = '/card';
   static String profile = '/profile';
   static String news = '/news';
+  static String todo = '/todo';
 }

@@ -2,6 +2,7 @@ import 'package:depi_flutter/helpers/routes.dart';
 import 'package:depi_flutter/screens/login_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Profile extends StatefulWidget {
   const Profile({super.key});
@@ -59,7 +60,9 @@ class _ProfileState extends State<Profile> {
           Text(''),
           Text(''),
           ElevatedButton(
-            onPressed: () {
+            onPressed: () async {
+           SharedPreferences prefs = await SharedPreferences.getInstance();
+              prefs.setBool(LoginPage.loginKey, false);
               Navigator.pushReplacementNamed(context, Routes.login);
             },
             child: Text('Logout'),

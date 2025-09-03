@@ -1,12 +1,14 @@
 import 'package:depi_flutter/helpers/routes.dart';
 import 'package:depi_flutter/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({super.key});
   final TextEditingController emailController = TextEditingController();
   final TextEditingController nameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  static String loginKey = 'hasLoggedIn';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,7 +48,9 @@ class LoginPage extends StatelessWidget {
     );
   }
 
-  _login(BuildContext context) {
+  _login(BuildContext context)async{
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setBool(LoginPage.loginKey, true);
     var name = nameController.text;
     var email = emailController.text;
     Navigator.pushReplacementNamed(
