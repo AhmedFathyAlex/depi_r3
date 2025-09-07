@@ -48,7 +48,7 @@ class _TodoScreenState extends State<TodoScreen> {
                           firstDate: DateTime.now(),
                           lastDate: DateTime.now().add(Duration(days: 365)),
                         ).then((selectedDate) {
-                          date.text = selectedDate.   ?? '';
+                          // date.text = selectedDate.   ?? '';
                         });
                       },
                     ),

@@ -1,17 +1,13 @@
-import 'package:depi_flutter/news/data/article_model.dart';
-import 'package:depi_flutter/news/data/custom_inerceptor.dart';
 import 'package:depi_flutter/news/ui/cubit/news_cubit.dart';
 import 'package:depi_flutter/news/ui/cubit/news_state.dart';
 import 'package:depi_flutter/news/ui/widgets/article_item.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shimmer_animation/shimmer_animation.dart';
 
 class News extends StatelessWidget {
   News({super.key});
 
-  final dio = Dio();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

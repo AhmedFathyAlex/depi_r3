@@ -7,21 +7,24 @@ import 'package:depi_flutter/screens/main_app.dart';
 import 'package:depi_flutter/screens/personal_card.dart';
 import 'package:depi_flutter/screens/profile.dart';
 import 'package:depi_flutter/screens/signup.dart';
-import 'package:depi_flutter/state_managment/counter_cubit.dart';
+import 'package:depi_flutter/state_managment/auth/auth_bloc.dart';
+import 'package:depi_flutter/state_managment/counter_bloc.dart';
 import 'package:depi_flutter/todo/todo_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'helpers/routes.dart';
 
 void main()async{
    Bloc.observer = MyBlocObserver();
-  var prefs = await SharedPreferences.getInstance();
-  bool isLoggedIn = prefs.getBool(LoginPage.loginKey) ?? false;
-
+   WidgetsFlutterBinding.ensureInitialized();
   runApp(
-    BlocProvider(
-      create: (context) => CounterCubit()..init(),
+    MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => NewsCubit()..fetchData()),
+        BlocProvider(create: (context) => CounterBloc()),
+        BlocProvider(create: (context) => AuthBloc()..initAuthBloc()),
+      ],
+
       child: MaterialApp(
         // named routes
         routes: {
@@ -34,7 +37,7 @@ void main()async{
           Routes.todo: (context) => TodoScreen(), 
 
         },
-        home: isLoggedIn ? TodoScreen() : LoginPage(),
+        home:LoginPage(),
         debugShowCheckedModeBanner: false,
       ),
     ),
