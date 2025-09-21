@@ -1,7 +1,9 @@
 import 'package:depi_flutter/helpers/bloc_observer.dart';
 import 'package:depi_flutter/news/ui/cubit/news_cubit.dart';
 import 'package:depi_flutter/news/ui/screens/news.dart';
+import 'package:depi_flutter/screens/ainmation_testing.dart';
 import 'package:depi_flutter/screens/counter.dart';
+import 'package:depi_flutter/screens/explicit_animation.dart';
 import 'package:depi_flutter/screens/login_page.dart';
 import 'package:depi_flutter/screens/main_app.dart';
 import 'package:depi_flutter/screens/personal_card.dart';
@@ -37,7 +39,7 @@ void main()async{
           Routes.todo: (context) => TodoScreen(), 
 
         },
-        home:LoginPage(),
+        home: ExplicitAnimation(),
         debugShowCheckedModeBanner: false,
       ),
     ),
