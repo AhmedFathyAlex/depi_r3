@@ -20,7 +20,9 @@ class _TodoScreenState extends State<TodoScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Todo Screen')),
+      appBar: AppBar(title: Text('Todo Screen'),
+        backgroundColor: Colors.blue,
+      ),
       body: ListView.builder(
         itemCount: tasks.length,
         itemBuilder: (context, index) {
@@ -83,7 +85,8 @@ void fun(){
   print('mmm');
   print('mmmm');
 }
-void testFunction(){
+
+void testFunction() {
   print("This is a test function");
   print("This is a test function");
   print("This is a test function");
