@@ -78,3 +78,9 @@ class _TodoScreenState extends State<TodoScreen> {
     );
   }
 }
+void testFunction(){
+  print("This is a test function");
+  print("This is a test function");
+  print("This is a test function");
+  print("This is a test function");
+}
