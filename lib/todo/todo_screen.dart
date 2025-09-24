@@ -20,8 +20,7 @@ class _TodoScreenState extends State<TodoScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Todo'),
+      appBar: AppBar(title: Text('Todo Screen'),
         backgroundColor: Colors.blue,
       ),
       body: ListView.builder(
