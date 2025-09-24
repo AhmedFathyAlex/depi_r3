@@ -83,3 +83,9 @@ void fun(){
   print('mmm');
   print('mmmm');
 }
+void testFunction(){
+  print("This is a test function");
+  print("This is a test function");
+  print("This is a test function");
+  print("This is a test function");
+}
