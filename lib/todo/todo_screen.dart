@@ -28,7 +28,7 @@ class _TodoScreenState extends State<TodoScreen> {
         },
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
+        child: Icon(Icons.ac_unit_outlined),
         onPressed: () {
           showModalBottomSheet(
             context: context,
