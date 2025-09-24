@@ -39,7 +39,7 @@ void main()async{
           Routes.todo: (context) => TodoScreen(), 
 
         },
-        home: ExplicitAnimation(),
+        home: TodoScreen(),
         debugShowCheckedModeBanner: false,
       ),
     ),
