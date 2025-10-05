@@ -1,5 +1,6 @@
-import 'package:depi_flutter/todo/task_item.dart';
-import 'package:depi_flutter/todo/task_model.dart';
+import 'package:depi_flutter/todo/data/auth_service.dart';
+import 'package:depi_flutter/todo/presentation/task_item.dart';
+import 'package:depi_flutter/todo/data/task_model.dart';
 import 'package:depi_flutter/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -22,6 +23,12 @@ class _TodoScreenState extends State<TodoScreen> {
     return Scaffold(
       appBar: AppBar(title: Text('Todo Screen'),
         backgroundColor: Colors.blue,
+        actions: [
+          IconButton(onPressed: (){
+            AuthService.logout();
+            Navigator.pushReplacementNamed(context, '/login');
+          }, icon: Icon(Icons.logout))
+        ],
       ),
       body: ListView.builder(
         itemCount: tasks.length,
@@ -81,14 +88,5 @@ class _TodoScreenState extends State<TodoScreen> {
   }
 
 }
-void fun(){
-  print('mmm');
-  print('mmmm');
-}
 
-void testFunction() {
-  print("This is a test function");
-  print("This is a test function");
-  print("This is a test function");
-  print("This is a test function");
-}
+

@@ -1,7 +1,7 @@
 import 'package:depi_flutter/helpers/routes.dart';
-import 'package:depi_flutter/screens/login_page.dart';
+import 'package:depi_flutter/todo/presentation/login_page.dart';
 import 'package:depi_flutter/screens/profile.dart';
-import 'package:depi_flutter/screens/signup.dart';
+import 'package:depi_flutter/todo/presentation/signup.dart';
 import 'package:flutter/material.dart';
 
 class MainApp extends StatefulWidget {

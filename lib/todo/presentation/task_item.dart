@@ -1,4 +1,4 @@
-import 'package:depi_flutter/todo/task_model.dart';
+import 'package:depi_flutter/todo/data/task_model.dart';
 import 'package:flutter/material.dart';
 
 class TaskItem extends StatefulWidget {

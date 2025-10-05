@@ -1,6 +1,7 @@
 import 'package:depi_flutter/data/auth_repositiry.dart';
-import 'package:depi_flutter/state_managment/auth/auth_event.dart';
-import 'package:depi_flutter/state_managment/auth/auth_state.dart';
+import 'package:depi_flutter/todo/data/auth_service.dart';
+import 'package:depi_flutter/todo/presentation/bloc/auth_event.dart';
+import 'package:depi_flutter/todo/presentation/bloc/auth_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState>{
@@ -8,27 +9,25 @@ class AuthBloc extends Bloc<AuthEvent, AuthState>{
 
   initAuthBloc()async{
     _authRepositiry.initAuthRepo();
-    bool isLoggedIn = await _authRepositiry.isLoggedIn();
-    if(isLoggedIn){
-      emit(Authenticated());
+    
+    if(AuthService.isLoggedIn){
+      emit(Authenticated(user: AuthService.getCurrentUser));
     }
   }
 
 
   AuthBloc() : super(Unauthenticated()){
     on<LoginEvent>((event, emit)async{
-      emit(Loadig());
+      emit(Loading());
         try{
-          await _authRepositiry.login(event.email, event.password);
-          emit(Authenticated());
+         var user = await AuthService.login(email: event.email, password: event.password);
+          emit(Authenticated(user: user));
         }
         catch(e){
           emit(Error(e.toString()));
         }
     }
     );
-  
-
 
     on<LogoutEvent>((event, emit)async{
       
