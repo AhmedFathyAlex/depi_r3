@@ -56,3 +56,9 @@ class MyWidget extends StatelessWidget {
     );
   }
 }
+
+class AuthServiceTestable {
+  /// Test email validation
+  bool isValidEmail(String email) => email.contains('@');
+  bool isValidPassword(String password) => password.length >= 6;
+}
