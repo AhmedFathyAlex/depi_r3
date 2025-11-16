@@ -1,0 +1,18 @@
+flavors:
+  development:
+    app:
+      name: "DEPI DEV"
+
+    android:
+      applicationId: "com.example.depi_flutter.dev"  
+    ios:
+      bundleId: "com.example.depi_flutter.dev"
+
+  production:
+    app:
+      name: "DEPI PRODUCTION"
+  
+    android:
+      applicationId: "com.example.depi_flutter.prod"
+    ios:
+      bundleId: "com.example.depi_flutter.prod"

@@ -44,7 +44,7 @@ void main()async{
           Routes.todo: (context) => TodoScreen(), 
 
         },
-        home: Signup(),
+        home: Profile(),
         debugShowCheckedModeBanner: false,
       ),
     ),
