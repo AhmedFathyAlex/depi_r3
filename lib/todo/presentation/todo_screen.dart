@@ -25,7 +25,7 @@ class _TodoScreenState extends State<TodoScreen> {
         backgroundColor: Colors.blue,
         actions: [
           IconButton(onPressed: (){
-            AuthService.logout();
+            // AuthService.logout();
             Navigator.pushReplacementNamed(context, '/login');
           }, icon: Icon(Icons.logout))
         ],

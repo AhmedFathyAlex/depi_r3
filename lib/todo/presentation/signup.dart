@@ -147,12 +147,12 @@ class _SignupState extends State<Signup> {
                   onPressed: ()async{
                     var validated = _formKey.currentState!.validate();
                     if(validated){
-                     var user = await AuthService.signup(email: emailController.text, password: passwordController.text);
-                      if(user.user != null){
-                        Navigator.pushReplacementNamed(context, Routes.todo);
-                      }else{
-                        print('error in signup');
-                      }
+                    //  var user = await AuthService.signup(email: emailController.text, password: passwordController.text);
+                      // if(user.user != null){
+                      //   Navigator.pushReplacementNamed(context, Routes.todo);
+                      // }else{
+                      //   print('error in signup');
+                      // }
                     }
                   },
                   child: Text('Sign up'),

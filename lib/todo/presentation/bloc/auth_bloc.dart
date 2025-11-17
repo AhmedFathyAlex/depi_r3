@@ -10,9 +10,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState>{
   initAuthBloc()async{
     _authRepositiry.initAuthRepo();
     
-    if(AuthService.isLoggedIn){
-      emit(Authenticated(user: AuthService.getCurrentUser));
-    }
+    // if(AuthService.isLoggedIn){
+    //   // emit(Authenticated(user: AuthService.getCurrentUser));
+    // }
   }
 
 
@@ -20,8 +20,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState>{
     on<LoginEvent>((event, emit)async{
       emit(Loading());
         try{
-         var user = await AuthService.login(email: event.email, password: event.password);
-          emit(Authenticated(user: user));
+        //  var user = await AuthService.login(email: event.email, password: event.password);
+          // emit(Authenticated(user: user));
         }
         catch(e){
           emit(Error(e.toString()));
